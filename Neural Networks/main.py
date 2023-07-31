@@ -63,8 +63,8 @@ class Network ():
         n = len(mini_batch)
         for (x,y) in mini_batch:
             delta_nabla_w, delta_nabla_b = self.backprop(x,y)
-            nabla_b = nabla_b + delta_nabla_b
-            nabla_w = nabla_w + delta_nabla_w
+            nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+            nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
         self.weights = [w-(learning_rate/len(mini_batch))*nw for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b-(learning_rate/len(mini_batch))*nb for b, nb in zip(self.biases, nabla_b)]
 
@@ -96,7 +96,6 @@ class Network ():
     
     def evaluate(self, test_data):
         test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]
-        print(test_results[0])
         return sum(int(x == y) for (x, y) in test_results)
 
 # helper functions
