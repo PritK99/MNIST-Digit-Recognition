@@ -18,17 +18,15 @@ def load_data_wrapper():
     training_results = [vectorized_result(y) for y in tr_d[1]]
     training_data = list(zip(training_inputs, training_results))
     test_inputs = [np.reshape(x, (784,1)) for x in te_d[0]]
-    test_results = [vectorized_result(y) for y in te_d[1]]
-    test_data = list(zip(test_inputs, test_results))
+    test_data = list(zip(test_inputs, te_d[1]))
     validation_inputs = [np.reshape(x, (784,1)) for x in va_d[0]]
-    validation_results = [vectorized_result(y) for y in va_d[1]]
-    validation_data = list(zip(validation_inputs,validation_results))
+    validation_data = list(zip(validation_inputs,va_d[1]))
 
     return training_data, validation_data, test_data
 
 def vectorized_result(num):
     output = np.zeros((10,1))
-    output[num] = 1
+    output[num] = 1.0
     return output
 
 # driver class for neural networks
@@ -90,20 +88,20 @@ class Network ():
         delta_nabla_b[-1] = delta
         delta_nabla_w[-1] = np.dot(delta, activations[-2].transpose())
         for l in range(2, self.num_layers):
-            delta = np.dot(self.weights[-l+1].transpose() ,delta)*sigmoid_prime(z[-l])
+            delta = np.dot(self.weights[-l+1].transpose() ,delta)*sigmoid_prime(z_cache[-l])
             delta_nabla_b[-l] = delta
             delta_nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
         return delta_nabla_w, delta_nabla_b
 
     
     def evaluate(self, test_data):
-        test_results = [((np.argmax(self.feedforward(x))), np.argmax(y)) for (x, y) in test_data]
-        result = [(x == y) for x, y in zip(test_results[0], test_results[1])]
-        return np.sum(result)
+        test_results = [(np.argmax(self.feedforward(x)), y) for (x, y) in test_data]
+        print(test_results[0])
+        return sum(int(x == y) for (x, y) in test_results)
 
 # helper functions
 def sigmoid(z):
-    return 1/(1 + np.exp(-z))
+    return 1.0/(1.0 + np.exp(-z))
 
 def sigmoid_prime(z):
     return sigmoid(z)*(1-sigmoid(z))
