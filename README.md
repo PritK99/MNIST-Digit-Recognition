@@ -9,7 +9,7 @@
 
 ##### Description
 
-Implementing <b>stochastic gradient descent</b> learning algorithm for a vanilla neural network. Here, the gradients are calculated using backpropagation algorithm. The model uses the quadratic cost function(MSE) and the sigmoid activation function for all the layers except the input layer.
+Implementing <b>stochastic gradient descent</b> learning algorithm for a vanilla neural network. Here, the gradients are calculated using backpropagation algorithm. The model uses the <b>quadratic cost function (Mean Squared Error)</b> and the sigmoid activation function for all the layers except the input layer.
 
 ##### Usage
 
