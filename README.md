@@ -17,14 +17,10 @@ Implementing <b>stochastic gradient descent</b> learning algorithm for a vanilla
 
 ##### Results
 
-* Using a single hidden layer with 30 neurons
-<img src = "assets/nn-with-30-hidden-neurons.png">
+* Using two hidden layers with 100 and 30 neurons respectively
+<img src = "assets/nn-with-100-30-hidden-layers.png">
+<img src = "assets/vanilla-neural-network.png">
 
-* Using a single hidden layer with 100 neurons
-<img src = "assets/nn-with-100-hidden-neurons.png">
-
-* Using two hidden layers with 50 and 30 neurons respectively
-<img src = "assets/nn-with-50-30-hidden-layers.png">
 
 ## References
 * <a href = "http://neuralnetworksanddeeplearning.com/index.html" >Neural Network and Deep Learning</a> by Michael Nielsen
