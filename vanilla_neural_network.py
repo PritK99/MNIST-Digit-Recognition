@@ -2,6 +2,7 @@ import numpy as np
 import random
 import gzip
 import pickle
+import matplotlib.pyplot as plt
 
 # loading the MNIST dataset
 def load_data() :
@@ -29,6 +30,16 @@ def vectorized_result(num):
     output[num] = 1.0
     return output
 
+# plotting graph for accuracy vs epochs
+def plot(accuracy):
+    x = [round(val*0.0001, 2) for val in accuracy]
+    plt.plot(range(len(x)), x)
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.title('vanilla-neural-network')
+    plt.savefig("vanilla-neural-network.png")
+    plt.show()
+
 # driver class for neural networks
 class Network ():
     def __init__(self, sizes):
@@ -36,6 +47,7 @@ class Network ():
         self.num_layers = len(sizes)
         self.weights = [np.random.randn(x,y) for x,y in zip(sizes[1:], sizes[:-1])]
         self.biases = [np.random.randn(y,1) for y in sizes[1:]]
+        self.accuracy = []
     
     def feedforward(self, a):
         for i in range(self.num_layers - 1):
@@ -53,7 +65,9 @@ class Network ():
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch, learning_rate)
             if (test_data):
-                print("Completing epoch {0}: {1}/{2}".format(i, self.evaluate(test_data), n_test))
+                x = self.evaluate(test_data)
+                print("Completing epoch {0}: {1}/{2}".format(i, x, n_test))
+                self.accuracy.append(x)
             else:
                 print("Completing epoch {0}".format(i))
 
@@ -108,5 +122,6 @@ def sigmoid_prime(z):
 # driver code
 if __name__ == "__main__":
     training_data, validation_data, test_data = load_data_wrapper()
-    net = Network([784,30,10])
+    net = Network([784,100,30,10])
     net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+    plot(net.accuracy)
