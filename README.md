@@ -21,7 +21,8 @@ Implementing <b>stochastic gradient descent</b> learning algorithm for a vanilla
 <img src = "assets/nn-with-100-30-hidden-layers.png">
 <img src = "assets/vanilla-neural-network.png">
 
-#### Method 2: Improving Method 1
+Note: The results might vary since the weights are initialized randomly everytime.
+#### Method 2: Improving the model
 
 ##### Description
 ##### Usage
