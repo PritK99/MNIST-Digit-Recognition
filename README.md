@@ -21,6 +21,14 @@ Implementing <b>stochastic gradient descent</b> learning algorithm for a vanilla
 <img src = "assets/nn-with-100-30-hidden-layers.png">
 <img src = "assets/vanilla-neural-network.png">
 
+#### Method 2: Improving Method 1
+
+##### Description
+##### Usage
+
+```python neural_network.py```
+
+##### Results
 
 ## References
 * <a href = "http://neuralnetworksanddeeplearning.com/index.html" >Neural Network and Deep Learning</a> by Michael Nielsen
