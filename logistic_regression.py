@@ -46,8 +46,10 @@ class Network ():
         self.sizes = sizes
         self.input_size = sizes[0]
         self.output_size = sizes[1]
-        self.weights = np.zeros((self.output_size, self.input_size), dtype=float)
-        self.bias = np.zeros((1,1), dtype=float)
+        self.weights = np.random.randn(self.output_size, self.input_size)
+        self.bias = np.random.randn(1,1)
+        # self.weights = np.zeros((self.output_size, self.input_size), dtype=float)
+        # self.bias = np.zeros((1,1), dtype=float)
         self.accuracy = []
     
     def feedforward(self, a):
@@ -72,8 +74,8 @@ class Network ():
                 print("Completing epoch {0}".format(i))
 
     def update_mini_batch(self, mini_batch, learning_rate):
-        nabla_b = np.zeros(1)
-        nabla_w = np.zeros(len(self.weights))
+        nabla_w  = np.zeros((self.output_size, self.input_size), dtype=float)
+        nabla_b = np.zeros((1,1), dtype=float)
         n = len(mini_batch)
         for (x,y) in mini_batch:
             delta_nabla_w, delta_nabla_b = self.backprop(x,y)
@@ -86,8 +88,8 @@ class Network ():
         return (output - y)
     
     def backprop(self, x, y):
-        delta_nabla_b = np.zeros(1)
-        delta_nabla_w = np.zeros(len(self.weights))
+        delta_nabla_w  = np.zeros((self.output_size, self.input_size), dtype=float)
+        delta_nabla_b = np.zeros((1,1), dtype=float)
         #forward pass
         a = x
         activations = [x]
@@ -119,5 +121,5 @@ def sigmoid_prime(z):
 if __name__ == "__main__":
     training_data, validation_data, test_data = load_data_wrapper()
     net = Network([784,10])
-    net.SGD(training_data, 40, 10, 0.1, test_data=test_data)
+    net.SGD(training_data, 40, 10, 0.1, test_data=validation_data)
     plot(net.accuracy)
