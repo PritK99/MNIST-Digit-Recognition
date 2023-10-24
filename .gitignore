@@ -1,6 +1,6 @@
 # Output images
 *.png
-!assets/*.png 
+!assets/results/*.png 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
