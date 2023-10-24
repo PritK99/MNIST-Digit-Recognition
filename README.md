@@ -88,6 +88,7 @@ python <name_of_the_file.py>
 ## Acknowledgements and Resources
 
 * <a href = "http://neuralnetworksanddeeplearning.com/index.html" >Neural Network and Deep Learning</a> by Michael Nielsen
+* ```Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization``` by ```deeplearning.ai``` delivered through Coursera
 
 ## License
 [MIT License](https://opensource.org/licenses/MIT)
