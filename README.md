@@ -8,7 +8,9 @@
   - [Table of Contents](#table-of-contents)
   - [About The Project](#about-the-project)
   - [File Structure](#file-structure)
-  - [Description](#Description)
+  - [Logistic Regression](Logistic-Regression)
+  - [Neural Networks](Neural-Networks)
+  - [Convolutional Neural Networks](Convolutional-Neural-Networks)
   - [Getting started](#Getting-Started)
   - [Contributors](#contributors)
   - [Acknowledgements and Resources](#acknowledgements-and-references)
@@ -20,34 +22,36 @@ Implementing Deep Learning for Handwritten Digit Recognition from scratch
 
 ## File Structure
 
-## Description
-### Approach 1: Using Vanilla Neural Networks
+```
+👨‍💻MNIST-Digit-Recognition
+ ┣ 📂assets                            // Contains all the reference gifs, results images
+ ┃ ┣ 📂results
+ ┣ 📂data                              // MNIST dataset
+ ┃ ┣ 📄mnist.pkl.gz
+ ┣ 📂documentation                     // Documentation
+ ┣ 📄neural_network.py
+ ┣ 📄README.md
 
-#### Method 1: Using SGD learning algorithm
+```
+## Neural Networks
 
-##### Description
+### Method 1: Initialing parameters with zeros
 
-Implementing <b>stochastic gradient descent</b> learning algorithm for a vanilla neural network. Here, the gradients are calculated using backpropagation algorithm. The model uses the <b>quadratic cost function (Mean Squared Error)</b> and the sigmoid activation function for all the layers except the input layer.
+#### Results
+<img src="assets/results/NN1.1.png" alt="Initialing parameters with zeros">
+<img src="assets/results/NN1.2.png" alt="Initialing parameters with zeros">
 
-##### Usage
+### Method 2: Initialing parameters randomly
 
-```python vanilla_neural_network.py```
+#### Results
+<img src="assets/results/NN2.1.png" alt="Initialing parameters randomly">
+<img src="assets/results/NN2.2.png" alt="Initialing parameters randomly">
 
-##### Results
+### Method 3: Initialing parameters using He initialization
 
-* Using two hidden layers with 100 and 30 neurons respectively
-<img src = "assets/nn-with-100-30-hidden-layers.png">
-<img src = "assets/vanilla-neural-network.png">
-
-Note: The results might vary since the weights are initialized randomly everytime.
-#### Method 2: Improving the model
-
-##### Description
-##### Usage
-
-```python neural_network.py```
-
-##### Results
+#### Results
+<img src="assets/results/NN3.1.png" alt="Initialing parameters using He initialization">
+<img src="assets/results/NN3.2.png" alt="Initialing parameters using He initialization">
 
 ## Getting Started
 
