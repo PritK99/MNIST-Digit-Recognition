@@ -42,11 +42,11 @@ def plot(accuracy):
 
 # driver class for neural networks
 class Network ():
-    def __init__(self, sizes):
+    def __init__(self, sizes, ):
         self.sizes = sizes
         self.num_layers = len(sizes)
-        self.weights = [np.random.randn(x,y) for x,y in zip(sizes[1:], sizes[:-1])]
-        self.biases = [np.random.randn(y,1) for y in sizes[1:]]
+        self.weights = [np.zeros((x,y)) for x,y in zip(sizes[1:], sizes[:-1])]
+        self.biases = [np.zeros((y,1)) for y in sizes[1:]]
         self.accuracy = []
     
     def feedforward(self, a):
@@ -122,6 +122,6 @@ def sigmoid_prime(z):
 # driver code
 if __name__ == "__main__":
     training_data, validation_data, test_data = load_data_wrapper()
-    net = Network([784, 10])
-    net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+    net = Network([784,100,30,10])
+    net.SGD(training_data, 20, 10, 3.0, test_data=test_data)
     plot(net.accuracy)
