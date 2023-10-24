@@ -36,17 +36,26 @@ def plot(accuracy):
     plt.plot(range(len(x)), x)
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
-    plt.title('vanilla-neural-network')
-    plt.savefig("vanilla-neural-network.png")
+    plt.title('output')
+    plt.savefig("output.png")
     plt.show()
 
 # driver class for neural networks
 class Network ():
-    def __init__(self, sizes):
+    def __init__(self, sizes, initialization = "He"):
         self.sizes = sizes
         self.num_layers = len(sizes)
-        self.weights = [np.random.randn(x,y) for x,y in zip(sizes[1:], sizes[:-1])]
-        self.biases = [np.random.randn(y,1) for y in sizes[1:]]
+        if (initialization == "zeros"):
+            self.weights = [np.zeros((x,y)) for x,y in zip(sizes[1:], sizes[:-1])]
+            self.biases = [np.zeros((y,1)) for y in sizes[1:]]
+        elif (initialization == "random"):
+            self.weights = [np.random.randn(x,y) for x,y in zip(sizes[1:], sizes[:-1])]
+            self.biases = [np.random.randn(y,1) for y in sizes[1:]]
+        elif (initialization == "He"):
+            self.weights = [np.random.randn(x,y)*np.sqrt(2/z) for x,y,z in zip(sizes[1:], sizes[:-1], sizes[0:])]
+            self.biases = [np.random.randn(y,1) for y in sizes[1:]]
+        else:
+            print("Invalid Initialization parameter")
         self.accuracy = []
     
     def feedforward(self, a):
@@ -122,6 +131,6 @@ def sigmoid_prime(z):
 # driver code
 if __name__ == "__main__":
     training_data, validation_data, test_data = load_data_wrapper()
-    net = Network([784, 10])
-    net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+    net = Network([784,100,30,10], "He")
+    net.SGD(training_data, 20, 10, 3.0, test_data=test_data)
     plot(net.accuracy)
