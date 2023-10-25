@@ -53,6 +53,12 @@ Implementing Deep Learning for Handwritten Digit Recognition from scratch
 <img src="assets/results/NN3.1.png" alt="Initialing parameters using He initialization">
 <img src="assets/results/NN3.2.png" alt="Initialing parameters using He initialization">
 
+### Method 4: Implementing L2 regularization with He initialization
+
+#### Results
+<img src="assets/results/NN4.1.png" alt="Implementing L2 regularization with He initialization">
+<img src="assets/results/NN4.2.png" alt="Implementing L2 regularization with He initialization">
+
 ## Getting Started
 
 ### Prerequisites
