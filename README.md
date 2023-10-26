@@ -8,9 +8,9 @@
   - [Table of Contents](#table-of-contents)
   - [About The Project](#about-the-project)
   - [File Structure](#file-structure)
-  - [Logistic Regression](Logistic-Regression)
-  - [Neural Networks](Neural-Networks)
-  - [Convolutional Neural Networks](Convolutional-Neural-Networks)
+  - [Logistic Regression](#logistic-regression)
+  - [Neural Networks](#neural-networks)
+  - [Convolutional Neural Networks](#convolutional-neural-networks)
   - [Getting started](#Getting-Started)
   - [Contributors](#contributors)
   - [Acknowledgements and Resources](#acknowledgements-and-references)
@@ -58,6 +58,12 @@ Implementing Deep Learning for Handwritten Digit Recognition from scratch
 #### Results
 <img src="assets/results/NN4.1.png" alt="Implementing L2 regularization with He initialization">
 <img src="assets/results/NN4.2.png" alt="Implementing L2 regularization with He initialization">
+
+### Method 5: Implementing dropout regularization with He initialization
+
+#### Results
+<img src="assets/results/NN5.1.png" alt="Implementing dropout regularization with He initialization">
+<img src="assets/results/NN5.2.png" alt=Implementing dropout regularization with He initialization">
 
 ## Getting Started
 

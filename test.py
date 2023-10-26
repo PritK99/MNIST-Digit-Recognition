@@ -3,6 +3,7 @@ import random
 import gzip
 import pickle
 import matplotlib.pyplot as plt
+import sys
 
 # loading the MNIST dataset
 def load_data() :
@@ -57,7 +58,9 @@ class Network ():
             self.weights = [np.random.randn(x,y)*np.sqrt(2/z) for x,y,z in zip(sizes[1:], sizes[:-1], sizes[0:])]
             self.biases = [np.random.randn(y,1) for y in sizes[1:]]
         else:
-            print("Invalid Initialization parameter.")
+            print("Invalid Initialization parameter. Performing He initialization by default.")
+            self.weights = [np.random.randn(x,y)*np.sqrt(2/z) for x,y,z in zip(sizes[1:], sizes[:-1], sizes[0:])]
+            self.biases = [np.random.randn(y,1) for y in sizes[1:]]
 
         # applying regularization
         if (regularization == "L2"):
@@ -66,9 +69,10 @@ class Network ():
             self.m = reg_params[1]
         elif (regularization == "dropout"):
             self.regularization = "dropout"
-            print("Dropout **WIP**")
-        else:
-            print("Invalid Regularization Technique")
+            self.keep_probs = []
+        elif(regularization != None):
+            print("Invalid Regularization Technique. Setting regularization to be None.")
+            regularization = None
 
         self.accuracy = []
     
@@ -160,5 +164,5 @@ def sigmoid_prime(z):
 if __name__ == "__main__":
     training_data, validation_data, test_data = load_data_wrapper()
     net = Network([784,100,30,10], "He", "L2", [0.7, len(training_data)])
-    net.SGD(training_data, 5, 20, 3.0, test_data=test_data)
+    net.SGD(training_data, 20, 10, 3.0, test_data=test_data)
     plot(net.accuracy)
